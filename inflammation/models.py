@@ -24,7 +24,7 @@ def daily_mean(data):
 
 
 def daily_max(data):
-    """Calculate the daily max of a 2d inflammation data array."""
+    """Calculate the daily max of a 2D inflammation data array."""
     return np.max(data, axis=0)
 
 
