@@ -81,3 +81,15 @@ def test_patient_normalise(test, expected):
        Assumption that test accuracy of two decimal places is sufficient."""
     from inflammation.models import patient_normalise
     npt.assert_almost_equal(patient_normalise(np.array(test)), np.array(expected), decimal=2)
+
+@pytest.mark.parametrize(
+    "test_data, row, , threshold, expected",
+    [
+        ([ [4, 2, 5], [1, 6, 2], [4, 1, 9] ], 1, 1, 2),
+        ([ [4, -2, 5], [1, 6, 20], [4, 6, 9] ], 0, 5, 0),
+    ])
+
+def test_daily_above_threshold(test_data, row, threshold, expected):
+    """Test that mean function works for an array of positive integers."""
+    from inflammation.models import daily_above_threshold
+    npt.assert_array_equal(daily_above_threshold(test_data, row, threshold), expected)

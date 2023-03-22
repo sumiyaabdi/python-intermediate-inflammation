@@ -9,7 +9,6 @@ and each column represents a single day across all patients.
 
 import numpy as np
 
-
 def load_csv(filename):
     """Load a Numpy array from a CSV
 
@@ -61,3 +60,16 @@ def patient_normalise(data):
     normalised[np.isnan(normalised)] = 0
     normalised[normalised < 0] = 0
     return normalised
+
+def daily_above_threshold(data,patient,threshold):
+    """
+    Return a list of booleans indicating whether each day's data for a patient  is above a threshold.
+
+    :param data: A 2D data array with inflammation data (each row contains
+                measurements for a single patient across all days).
+    :param patient: The patient to check
+    :param threshold: The threshold to check against
+
+    :returns: A list of booleans indicating whether the data for that patient  is above a threshold.
+    """
+    return sum(list(map(lambda x: x > threshold, data[patient])))

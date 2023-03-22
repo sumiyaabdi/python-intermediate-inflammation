@@ -14,6 +14,7 @@ def main(args):
     - passing data between models and views
     """
     in_files = args.infiles
+    verbose=args.v
     if not isinstance(in_files, list):
         in_files = [args.infiles]
 
@@ -25,7 +26,8 @@ def main(args):
             'max': models.daily_max(inflammation_data),
             'min': models.daily_min(inflammation_data)
         }
-
+        if verbose:
+            views.report_stats(view_data)
         views.visualize(view_data)
 
 if __name__ == "__main__":
@@ -36,6 +38,10 @@ if __name__ == "__main__":
         'infiles',
         nargs='+',
         help='Input CSV(s) containing inflammation series for each patient')
+
+    parser.add_argument(
+        '-v',
+        help='Add flag to print statistics to console')
 
     args = parser.parse_args()
 
