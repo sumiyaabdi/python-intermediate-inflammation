@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "inflammation"
+version = "1.0.0"
+description = "Analyse patient inflammation data"
+authors = ["sumiyaabdi <20847637+sumiyaabdi@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+matplotlib = "^3.7.1"
+numpy = "^1.24.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^2.17.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
